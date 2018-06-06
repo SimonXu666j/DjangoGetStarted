@@ -26,7 +26,7 @@ SECRET_KEY = '4$5b7uk=qb415=3fdikr(z0@e4*w*5m^y2fpldw=volykoih#j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+STATIC_ROOT = '/static/'
 ALLOWED_HOSTS = []
 
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'message',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -76,13 +77,21 @@ WSGI_APPLICATION = 'DjangoGetStarted.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+      'default': {
+           'ENGINE': 'django.db.backends.mysql',
+           'NAME': 'testdjango',
+           'USER':'root',
+           'PASSWORD':'simon',
+           'HOST':'192.168.1.9'
+      }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -121,3 +130,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
